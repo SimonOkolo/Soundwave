@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Guessing Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="gameTitle">SoundWave</h1>
+    </header>
+
+    <div id="loginForm">
+        <input type="text" id="playerName" placeholder="Enter your name">
+        <input type="number" id="rounds" min="3" max="10" value="5">
+        <button onclick="createGame()">Create New Game</button>
+        <br><br>
+        <input type="text" id="sessionCode" placeholder="Enter session code">
+        <button onclick="joinGame()">Join Existing Game</button>
+    </div>
+
+    <div id="lobbyArea" style="display: none;">
+        <h2>Lobby - Session Code: 
+            <span id="currentSessionCode" class="copyable" title="Click to copy"></span>
+        </h2>
+        <div id="playerList"></div>
+        <button id="readyButton" onclick="toggleReady()">Ready</button>
+    </div>
+
+    <div id="gameArea" style="display: none;">
+        <div id="scoreBoard"></div>
+        <div id="selectorArea" style="display: none;">
+            <input type="text" id="songSearch" placeholder="Search for a song">
+            <div id="searchResults"></div>
+            <div id="selectedSong"></div>
+            <input type="number" id="startTime" placeholder="Start time (seconds)">
+            <input type="number" id="duration" placeholder="Duration (seconds)">
+            <button onclick="selectSong()">Select Song</button>
+        </div>
+        <div id="guesserArea" style="display: none;">
+            <input type="text" id="guessInput" placeholder="Enter your guess">
+            <button onclick="submitGuess()">Submit Guess</button>
+        </div>
+        <div id="chat">
+            <div id="messages"></div>
+            <input type="text" id="chatInput" placeholder="Type your message">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
